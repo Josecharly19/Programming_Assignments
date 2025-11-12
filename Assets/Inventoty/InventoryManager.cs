@@ -11,7 +11,7 @@ public class Inventory_Manager : MonoBehaviour
     //the inventory
     public List<Item> items = new List<Item>();
 
-    private void Awaken()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
