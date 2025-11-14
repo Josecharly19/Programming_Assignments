@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0c8aa944724ea45b288e712929f024, type: 3}
   m_Name: Skibidi
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Item
+  icon: {fileID: 21300000, guid: 087e3ec3f99cbf341a37706dc9dc4a16, type: 3}
   sizeX: 1
   sizeY: 1

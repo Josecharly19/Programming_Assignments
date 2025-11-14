@@ -1,31 +1,58 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SlotUI : MonoBehaviour
 {
-    public GameObject slotPrefab;
-    public Transform gridPanel;
+    public GameObject slotPrefab; //visual slot empty
+    public Transform gridPanel; //the panel with gridlayourgrpup
 
-    private void OnEnable()
+    private List<GameObject> slots = new List<GameObject>();
+    private const int totalSlots = 24; //10x6 grid
+
+    private void Start()
     {
+        GenerateSlots();
         RefreshInventory();
     }
-
-    public void RefreshInventory()
+    //creates 60 empty UI slots
+    public void GenerateSlots()
     {
-        //clear old slots
+        //clear.old slots
         foreach (Transform child in gridPanel)
+        Destroy(child.gameObject);
+
+        slots.Clear();
+
+        //create 60 slots
+        for (int i = 0; i < totalSlots; i++)
         {
-            Destroy(child.gameObject);
+            GameObject newSlot = Instantiate(slotPrefab, gridPanel);
+            slots.Add(newSlot);
         }
 
-        //adds a slot of each item
-        foreach (Item item in Inventory_Manager.Instance.items)
-        {
-            GameObject slot = Instantiate(slotPrefab, gridPanel);
+    }
 
-            //time assings icon
-            slot.GetComponent<Image>().sprite = item.icon;
+    //fills slots with items
+    public void RefreshInventory()
+    {
+        //loop through all slots
+        for (int i = 0; i <totalSlots; i++)
+        {
+            Image iconUI = slots[i].GetComponent<Image>();
+
+            if (i < Inventory_Manager.Instance.items.Count)
+            {
+                //show item icon
+                iconUI.sprite = Inventory_Manager.Instance.items[i].icon;
+                iconUI.color = Color.white;
+            }
+            else
+            {
+                //empty slot
+                iconUI.sprite = null;
+                iconUI.color = new Color(1, 1, 1, 0.1f); //faint empy slot
+            }
         }
     }
 }
