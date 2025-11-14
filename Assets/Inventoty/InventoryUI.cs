@@ -7,7 +7,7 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             isOpen = !isOpen;
             inventoryPanel.SetActive(isOpen);

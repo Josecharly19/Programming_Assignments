@@ -8,7 +8,7 @@ public class SlotUI : MonoBehaviour
     public Transform gridPanel; //the panel with gridlayourgrpup
 
     private List<GameObject> slots = new List<GameObject>();
-    private const int totalSlots = 24; //10x6 grid
+    private const int totalSlots = 60; //10x6 grid
 
     private void Start()
     {

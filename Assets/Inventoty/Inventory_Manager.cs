@@ -27,6 +27,11 @@ public class Inventory_Manager : MonoBehaviour
     {
         items.Add(newItem);
         Debug.Log("Added item:" + newItem.itemName);
+
+        // Update inventory UI using new Unity API
+        SlotUI ui = FindFirstObjectByType<SlotUI>();
+        if (ui != null)
+        ui.RefreshInventory();
     }
 
     public void RemoveItem(Item item)
